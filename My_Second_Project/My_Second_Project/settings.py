@@ -10,13 +10,19 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-from pathlib import Path
+# from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATES_DIR = Path.joinpath(BASE_DIR, 'templates')
-STATIC_DIR = Path.joinpath(BASE_DIR, 'static')
-MEDIA_DIR = Path.joinpath(BASE_DIR, 'media')
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+MEDIA_DIR = os.path.join(BASE_DIR, 'media')
+
+# BASE_DIR = Path(__file__).resolve().parent.parent
+# TEMPLATES_DIR = Path.joinpath(BASE_DIR, 'templates')
+# STATIC_DIR = Path.joinpath(BASE_DIR, 'static')
+# MEDIA_DIR = Path.joinpath(BASE_DIR, 'media')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -26,7 +32,7 @@ SECRET_KEY = 'rds%_my9)u8$rac^kfg*(vun%i#zh!qc80um2#e1phq(67#xjh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['miard.pythonanywhere.com',]
 
 
 # Application definition
@@ -78,7 +84,7 @@ WSGI_APPLICATION = 'My_Second_Project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
